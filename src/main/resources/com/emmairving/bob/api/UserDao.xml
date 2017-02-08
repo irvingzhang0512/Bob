@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emmairving.bob.api.dao.UserDao">
+    <select id="getList" resultType="com.emmairving.bob.api.model.User">
+        SELECT id, name, password, meter_number, joinDate
+        FROM t_user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="meter_number != null">
+                and meter_number = #{meter_number}
+            </if>
+            <if test="joinDate != null">
+                and joinDate = #{joinDate}
+            </if>
+        </where>
+        ORDER BY
+        <choose>
+            <when test="sort == 'id'.toString()">id</when>
+            <when test="sort == 'd_id'.toString()">id desc</when>
+            <when test="sort == 'name'.toString()">name</when>
+            <when test="sort == 'd_name'.toString()">name desc</when>
+            <when test="sort == 'meter_number'.toString()">meter_number</when>
+            <when test="sort == 'd_meter_number'.toString()">meter_number desc</when>
+            <when test="sort == 'password'.toString()">password</when>
+            <when test="sort == 'd_password'.toString()">password desc</when>
+            <when test="sort == 'joinDate'.toString()">joinDate</when>
+            <when test="sort == 'd_joinDate'.toString()">joinDate desc</when>
+            <otherwise>id</otherwise>
+        </choose>
+        <if test="pageSize != null and pageStart != null">
+            LIMIT #{pageStart}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="getCount" resultType="com.emmairving.bob.api.model.User">
+        SELECT COUNT(*)
+        FROM t_user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="meter_number != null">
+                and meter_number = #{meter_number}
+            </if>
+            <if test="joinDate != null">
+                and joinDate = #{joinDate}
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.emmairving.bob.api.model.User">
+        UPDATE t_user
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="meter_number != null">
+                meter_number = #{meter_number},
+            </if>
+            <if test="joinDate != null">
+                joinDate = #{joinDate}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

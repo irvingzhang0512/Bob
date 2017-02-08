@@ -1,9 +1,7 @@
 package com.emmairving.bob.api.dao;
 
 import com.emmairving.bob.api.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.*;
 
 /**
  * Created by irving on 17/2/7.
@@ -21,4 +19,15 @@ public interface UserDao extends BaseDao<User, Integer> {
         keyProperty = "id"
     )
     void insert(User user);
+
+    @Override
+    @Delete("DELETE FROM t_user WHERE id = #{id}")
+    void deleteById(Integer id);
+
+    @Override
+    @Select(
+        "SELECT id, name, password, meter_number, joinDate" +
+        "FROM t_user WHERE id = #{id}"
+    )
+    User getById(Integer id);
 }
