@@ -39,22 +39,4 @@ public class WebController implements ApplicationContextAware {
         }
         return "server is started already!";
     }
-
-    @RequestMapping("test")
-    public Object test() {
-        return "test";
-    }
-
-    @RequestMapping("insert")
-    public Object insert() {
-        RawLocalData rawLocalData = new RawLocalData();
-        try {
-            rawLocalDataDao.insert(rawLocalData);
-        } catch(Exception e) {
-            e.printStackTrace();
-            logger.error("INSERT ERROR!");
-            return "error";
-        }
-        return "success";
-    }
 }
