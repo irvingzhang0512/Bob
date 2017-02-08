@@ -54,6 +54,24 @@ public class RawLocalDataService {
         rawLocalData.setObjectByIndex(d, index);
     }
 
+    /**
+     *
+     * 从命令中获取电表号
+     * 调用该方法前，必须调用CommandsUtils.isLegalRawLocalDataCommands(commands)方法并返回true
+     *
+     * @param commands
+     */
+    public static String getMeterNumberFromCommands(String commands) {
+        String[] words = commands.split(" ");
+        return words[1];
+    }
+
+    /**
+     *
+     * 插入RawLocalData
+     *
+     * @param rawLocalData
+     */
     public void insertRawLocalData(RawLocalData rawLocalData) {
         try {
             rawLocalDataDao.insert(rawLocalData);

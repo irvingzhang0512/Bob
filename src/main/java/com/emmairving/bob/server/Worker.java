@@ -1,5 +1,6 @@
 package com.emmairving.bob.server;
 
+import com.emmairving.bob.server.common.RunningThreads;
 import com.emmairving.bob.server.model.RawLocalData;
 import com.emmairving.bob.server.service.RawLocalDataService;
 import com.emmairving.bob.server.utils.CommandsUtils;
@@ -28,6 +29,8 @@ public class Worker extends Thread {
 
     private boolean shutdown = false;
 
+    private String meter_number = null;
+
     @Autowired
     private RawLocalDataService rawLocalDataService;
 
@@ -43,8 +46,9 @@ public class Worker extends Thread {
         }
     }
 
-    private void shutdown() {
+    public void shutdown() {
         shutdown = true;
+        logger.info("shutdown thread "+ meter_number);
     }
 
     public void run() {
@@ -58,10 +62,17 @@ public class Worker extends Thread {
             } catch (IOException e) {
                 logger.error("Read Worker Input ERROR!");
                 shutdown();
+                break;
             }
 
             //错误命令！
             if(!CommandsUtils.isLegalRawLocalDataCommands(commands)) continue;
+
+            // 获取电表号，并将当前Worker添加到RunningThreads中
+            if( meter_number == null ) {
+                meter_number = rawLocalDataService.getMeterNumberFromCommands(commands);
+                RunningThreads.addThread(meter_number, this);
+            }
 
             if( rawLocalDataService.canSetRawLocalDataByCommands(commands, rawLocalData) ) {
                 rawLocalDataService.setRawLocalDataByCommands(commands, rawLocalData);
@@ -83,12 +94,9 @@ public class Worker extends Thread {
         return rev;
     }
 
-    private void writeOutput(String str) {
-        try {
-            output.write(str.getBytes());
-            output.flush();
-        } catch(Exception e) {
-            logger.error("Write Worker Output ERROR!");
-        }
+    public void writeOutput(String str) throws IOException {
+        output.write(str.getBytes());
+        output.flush();
+        logger.info("Sending order to "+ meter_number+" :"+ str);
     }
 }
