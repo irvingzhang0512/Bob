@@ -71,4 +71,10 @@ public class WebController implements ApplicationContextAware {
         if( RunningThreads.sendOrders(meter_number, order) ) return "success";
         return "error";
     }
+
+    @ApiIgnore
+    @RequestMapping("counts")
+    public Integer threadCnts() {
+        return RunningThreads.getThreadsCounts();
+    }
 }

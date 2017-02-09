@@ -89,4 +89,14 @@ public class RunningThreads {
         }
         return false;
     }
+
+    /**
+     *
+     * 获取正在运行的线程数量
+     *
+     * @return
+     */
+    public static int getThreadsCounts() {
+        return runningThreads.size();
+    }
 }
