@@ -23,13 +23,19 @@ import java.net.Socket;
 public class Worker extends Thread {
     private static final Logger logger = LogManager.getLogger(Worker.class.getName());
 
+    // 通过Socket初始化Worker线程
     private Socket socket = null;
     private InputStream input = null;
     private OutputStream output = null;
 
+    // 当前线程是否无线循环
     private boolean shutdown = false;
 
+    // 当前线程所对应的电表号
     private String meter_number = null;
+
+    // 电表数据插入数据库次数
+    private int insertCnt = 0;
 
     @Autowired
     private RawLocalDataService rawLocalDataService;
@@ -80,7 +86,7 @@ public class Worker extends Thread {
                 rawLocalDataService.insertRawLocalData(rawLocalData);
                 rawLocalData = new RawLocalData();
                 try {
-                    writeOutput("RESPONSE GET RawLocalData");
+                    writeOutput("RESPONSE GET RawLocalData " + (insertCnt++) );
                 } catch(IOException e) {
                     logger.error("Error Writing To "+meter_number);
                 }
@@ -90,6 +96,12 @@ public class Worker extends Thread {
         logger.info("socket closed!");
     }
 
+    /**
+     * 读取Socket数据
+     *
+     * @return
+     * @throws IOException
+     */
     private String readInput() throws IOException{
         byte[] bytes = new byte[2048];
         int length = 0;
@@ -99,6 +111,13 @@ public class Worker extends Thread {
         return rev;
     }
 
+    /**
+     *
+     * 向Socket写数据
+     *
+     * @param str
+     * @throws IOException
+     */
     public void writeOutput(String str) throws IOException {
         output.write(str.getBytes());
         output.flush();

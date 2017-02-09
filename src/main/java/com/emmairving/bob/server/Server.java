@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
 /**
  * Created by irving on 17/2/5.
  */
-@Component("com")
+@Component("server")
 public class Server extends Thread implements ApplicationContextAware {
     private static final Logger logger = LogManager.getLogger(Server.class.getName());
 
