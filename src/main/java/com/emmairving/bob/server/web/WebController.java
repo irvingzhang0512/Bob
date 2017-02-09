@@ -35,9 +35,9 @@ public class WebController implements ApplicationContextAware {
 
 
     @ApiIgnore
-    @RequestMapping("com")
+    @RequestMapping("server")
     public Object startServer() {
-        Server server = context.getBean("com", Server.class);
+        Server server = context.getBean("server", Server.class);
         if( !isStart ) {
             server.start();
             isStart = true;
