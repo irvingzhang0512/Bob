@@ -38,10 +38,11 @@ public class RunningThreads {
      * @param worker
      * @return
      */
-    public static boolean addThread(String meter_number, Worker worker) {
-        if( runningThreads.containsKey(meter_number) ) return false;
+    public static void addThread(String meter_number, Worker worker) {
+        if( runningThreads.containsKey(meter_number) ) {
+            runningThreads.get(meter_number).shutdown();
+        }
         runningThreads.put(meter_number, worker);
-        return true;
     }
 
     public static Worker getThread(String meter_number) {

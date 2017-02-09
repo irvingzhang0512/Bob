@@ -85,10 +85,12 @@ public class Worker extends Thread {
             } else {
                 rawLocalDataService.insertRawLocalData(rawLocalData);
                 rawLocalData = new RawLocalData();
-                try {
-                    writeOutput("RESPONSE GET RawLocalData " + (insertCnt++) );
-                } catch(IOException e) {
-                    logger.error("Error Writing To "+meter_number);
+                if( insertCnt % 10 == 0 ) {
+                    try {
+                        writeOutput("RESPONSE GET RawLocalData " + (insertCnt++));
+                    } catch (IOException e) {
+                        logger.error("Error Writing To " + meter_number);
+                    }
                 }
             }
 
