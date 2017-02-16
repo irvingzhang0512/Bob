@@ -54,7 +54,7 @@ public class Worker extends Thread {
 
     public void shutdown() {
         shutdown = true;
-        logger.info("shutdown thread "+ meter_number);
+        logger.info("try to shutdown thread "+ Thread.currentThread().getName());
     }
 
     public void run() {
