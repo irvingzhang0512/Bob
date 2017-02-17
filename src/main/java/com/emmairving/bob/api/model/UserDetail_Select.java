@@ -1,13 +1,17 @@
 package com.emmairving.bob.api.model;
 
 /**
- * Created by irving on 17/2/7.
+ * Created by irving on 17/2/17.
  */
-public class UserDetail {
+public class UserDetail_Select {
     private Integer id;
     private String last_login_ip;
     private String last_login_time;
     private Integer raw_local_data_start_page;
+
+    private Integer pageStart;
+    private Integer pageSize;
+    private Integer pageNumber;
 
     public Integer getId() {
         return id;
@@ -39,5 +43,29 @@ public class UserDetail {
 
     public void setRaw_local_data_start_page(Integer raw_local_data_start_page) {
         this.raw_local_data_start_page = raw_local_data_start_page;
+    }
+
+    public Integer getPageStart() {
+        return pageStart;
+    }
+
+    public void setPageStart(Integer pageStart) {
+        this.pageStart = pageStart;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
     }
 }

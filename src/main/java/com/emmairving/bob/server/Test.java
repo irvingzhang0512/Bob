@@ -2,8 +2,8 @@ package com.emmairving.bob.server;
 
 import com.emmairving.bob.Bootstrap;
 import com.emmairving.bob.server.dao.RawLocalDataDao;
-import com.emmairving.bob.server.model.RawLocalData;
 import com.emmairving.bob.server.model.RawLocalData_Select;
+import com.emmairving.bob.server.service.LocalDataService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -20,16 +20,28 @@ import java.util.List;
 @SpringApplicationConfiguration(Bootstrap.class)
 public class Test {
     @Autowired
+    private LocalDataService localDataService;
+    @Autowired
     private RawLocalDataDao rawLocalDataDao;
-
 
     @org.junit.Test
     public void test() {
-        RawLocalData_Select rawLocalData_select = new RawLocalData_Select();
+        // 33
+        localDataService.rawLocalDataHandler(25404, 1, "000001094917");
 
-        rawLocalData_select.setElectric_energy(52.6);
 
-        List<RawLocalData> list = rawLocalDataDao.getList(rawLocalData_select);
-        System.out.println(list.size());
+
+////        RawLocalData_Select rawLocalData_select = new RawLocalData_Select();
+//          RawLocalData_Select rawLocalData_select = new RawLocalData_Select();
+////        // 获取一共需要处理的RawLocalData数量
+////        rawLocalData_select.setMeter_number("000001094917");
+//          rawLocalData_select.setMeter_number("000001094917");
+////        rawLocalData_select.setPageStart(0);
+//          rawLocalData_select.setPageStart(10000);
+////        rawLocalData_select.setPageSize(1000000);
+//          rawLocalData_select.setPageSize(1000000);
+////        int cnt = rawLocalDataDao.getCount(rawLocalData_select);
+//          int cnt = rawLocalDataDao.getCount(rawLocalData_select);
+//        System.out.println("CNT = " + cnt);
     }
 }

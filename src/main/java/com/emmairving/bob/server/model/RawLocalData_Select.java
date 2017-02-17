@@ -5,7 +5,7 @@ package com.emmairving.bob.server.model;
  */
 public class RawLocalData_Select {
     private Integer id;
-    private String user_id;
+    private Integer user_id;
     private String meter_number;
     private Double voltage;
     private Double current;
@@ -40,11 +40,11 @@ public class RawLocalData_Select {
         this.id = id;
     }
 
-    public String getUser_id() {
+    public Integer getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 

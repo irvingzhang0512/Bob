@@ -44,7 +44,7 @@ public class UserController {
         User user = new User();
         user.setName(name);
         user.setPassword(password);
-        user.setMeter_id(meter_number);
+        user.setMeter_number(meter_number);
 
         try {
             userService.insert(user);

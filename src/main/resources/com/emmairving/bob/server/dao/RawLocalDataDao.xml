@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.emmairving.bob.server.dao.RawLocalDataDao">
     <select id="getList" resultType="com.emmairving.bob.server.model.RawLocalData">
-        SELECT id, user_id, meter_number, voltage, current, active_power,
+        SELECT id, user_id, meter_number, insert_time, voltage, current, active_power,
                 reactive_power, apparent_power, power_factor, electric_energy
         FROM t_raw_local
         <where>
@@ -81,52 +81,55 @@
         </if>
     </select>
 
-    <select id="getCount" resultType="com.emmairving.bob.server.model.RawLocalData">
-        SELECT id, user_id, meter_number, voltage, current, active_power,
-        reactive_power, apparent_power, power_factor, electric_energy
-        FROM t_raw_local
-        <where>
-            <if test="id != null">
-                id = #{id}
-            </if>
-            <if test="user_id != null">
-                and user_id = #{user_id}
-            </if>
-            <if test="meter_number != null">
-                and meter_number = #{meter_number}
-            </if>
-            <if test="voltage != null">
-                and voltage = #{voltage}
-            </if>
-            <if test="current != null">
-                and current = #{current}
-            </if>
-            <if test="active_power != null">
-                and active_power = #{active_power}
-            </if>
-            <if test="reactive_power != null">
-                and reactive_power = #{reactive_power}
-            </if>
-            <if test="apparent_power != null">
-                and apparent_power = #{apparent_power}
-            </if>
-            <if test="power_factor != null">
-                and power_factor = #{power_factor}
-            </if>
-            <if test="electric_energy != null">
-                and electric_energy = #{electric_energy}
-            </if>
-            <if test="insert_time != null">
-                and insert_time = #{insert_time}
-            </if>
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM
+        (
+            SELECT id FROM t_raw_local
+            <where>
+                <if test="id != null">
+                    id = #{id}
+                </if>
+                <if test="user_id != null">
+                    and user_id = #{user_id}
+                </if>
+                <if test="meter_number != null">
+                    and meter_number = #{meter_number}
+                </if>
+                <if test="voltage != null">
+                    and voltage = #{voltage}
+                </if>
+                <if test="current != null">
+                    and current = #{current}
+                </if>
+                <if test="active_power != null">
+                    and active_power = #{active_power}
+                </if>
+                <if test="reactive_power != null">
+                    and reactive_power = #{reactive_power}
+                </if>
+                <if test="apparent_power != null">
+                    and apparent_power = #{apparent_power}
+                </if>
+                <if test="power_factor != null">
+                    and power_factor = #{power_factor}
+                </if>
+                <if test="electric_energy != null">
+                    and electric_energy = #{electric_energy}
+                </if>
+                <if test="insert_time != null">
+                    and insert_time = #{insert_time}
+                </if>
 
-            <if test="min_insert_time != null">
-                and insert_time &gt; #{min_insert_time}
+                <if test="min_insert_time != null">
+                    and insert_time &gt; #{min_insert_time}
+                </if>
+                <if test="max_insert_time != null">
+                    and insert_time &lt; #{max_insert_time}
+                </if>
+            </where>
+            <if test="pageStart != null and pageSize != null">
+                LIMIT #{pageStart}, #{pageSize}
             </if>
-            <if test="max_insert_time != null">
-                and insert_time &lt; #{max_insert_time}
-            </if>
-
-        </where>
+        ) AS a
     </select>
 </mapper>

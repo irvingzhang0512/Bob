@@ -1,25 +1,20 @@
 package com.emmairving.bob.api.model;
 
 /**
- * Created by irving on 17/2/7.
+ * Created by irving on 17/2/18.
  */
-public class User {
+public class User_Select {
     private Integer id;
     private String name;
     private String meter_number;
     private String password;
     private String joinDate;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", meter_number='" + meter_number + '\'' +
-                ", password='" + password + '\'' +
-                ", joinDate='" + joinDate + '\'' +
-                '}';
-    }
+    private String sort;
+
+    private Integer pageStart;
+    private Integer pageSize;
+    private Integer pageNumber;
 
     public Integer getId() {
         return id;
@@ -59,5 +54,37 @@ public class User {
 
     public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
+    }
+
+    public Integer getPageStart() {
+        return pageStart;
+    }
+
+    public void setPageStart(Integer pageStart) {
+        this.pageStart = pageStart;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }

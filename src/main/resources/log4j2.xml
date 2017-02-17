@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug">
     <Appenders>
-        <!--<Console name="Console" target="SYSTEM_OUT">-->
-            <!--<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>-->
-        <!--</Console>-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
 
-        <RollingFile name="ERROR_ROLLING_FILE"
-                     fileName="/logs/error/error-logs.logs"
-                     filePattern="/logs/error/%d{yyyy-MM-dd}-error.log">
-            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout>
-                <Pattern>%d [%t] %-5p [%c] - %m%n  </Pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="24"/>
-                <SizeBasedTriggeringPolicy size="50 MB"/>
-            </Policies>
-        </RollingFile>
+        <!--<RollingFile name="ERROR_ROLLING_FILE"-->
+                     <!--fileName="/logs/error/error-logs.logs"-->
+                     <!--filePattern="/logs/error/%d{yyyy-MM-dd}-error.log">-->
+            <!--<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--<PatternLayout>-->
+                <!--<Pattern>%d [%t] %-5p [%c] - %m%n  </Pattern>-->
+            <!--</PatternLayout>-->
+            <!--<Policies>-->
+                <!--<TimeBasedTriggeringPolicy interval="24"/>-->
+                <!--<SizeBasedTriggeringPolicy size="50 MB"/>-->
+            <!--</Policies>-->
+        <!--</RollingFile>-->
 
-        <RollingFile name="INFO_ROLLING_FILE"
-                     fileName="/logs/info/info-logs.logs"
-                     filePattern="/logs/info/%d{yyyy-MM-dd}-info.log">
-            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout>
-                <Pattern>%d [%t] %-5p [%c] - %m%n  </Pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="24"/>
-                <SizeBasedTriggeringPolicy size="50 MB"/>
-            </Policies>
-        </RollingFile>
+        <!--<RollingFile name="INFO_ROLLING_FILE"-->
+                     <!--fileName="/logs/info/info-logs.logs"-->
+                     <!--filePattern="/logs/info/%d{yyyy-MM-dd}-info.log">-->
+            <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--<PatternLayout>-->
+                <!--<Pattern>%d [%t] %-5p [%c] - %m%n  </Pattern>-->
+            <!--</PatternLayout>-->
+            <!--<Policies>-->
+                <!--<TimeBasedTriggeringPolicy interval="24"/>-->
+                <!--<SizeBasedTriggeringPolicy size="50 MB"/>-->
+            <!--</Policies>-->
+        <!--</RollingFile>-->
 
     </Appenders>
     <Loggers>
-        <Root level="info">
-            <AppenderRef ref="INFO_ROLLING_FILE"/>
-            <AppenderRef ref="ERROR_ROLLING_FILE"/>
+        <Root level="debug">
+            <AppenderRef ref="Console" />
+            <!--<AppenderRef ref="INFO_ROLLING_FILE"/>-->
+            <!--<AppenderRef ref="ERROR_ROLLING_FILE"/>-->
         </Root>
     </Loggers>
 </Configuration>

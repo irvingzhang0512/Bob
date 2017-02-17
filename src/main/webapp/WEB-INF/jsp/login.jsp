@@ -1,4 +1,6 @@
-﻿<!DOCTYPE HTML>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -24,20 +26,17 @@
 <input type="hidden" id="TenantId" name="TenantId" value="" />
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-
-    <div class="header"></div>
-
-    <form class="form form-horizontal" action="index.html" method="post">
+    <form class="form form-horizontal" action="/Home/Index" method="post">
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
-          <input id="" name="" type="text" placeholder="账户" class="input-text size-L">
+          <input id="" name="username" type="text" placeholder="账户" class="input-text size-L">
         </div>
       </div>
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
         <div class="formControls col-xs-8">
-          <input id="" name="" type="password" placeholder="密码" class="input-text size-L">
+          <input id="" name="password" type="password" placeholder="密码" class="input-text size-L">
         </div>
       </div>
       <div class="row cl">
