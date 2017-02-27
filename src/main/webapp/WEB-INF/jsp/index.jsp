@@ -51,9 +51,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/member-list.html" data-title="修改基本资料" href="javascript:;">会员列表</a></li>
-					<li><a data-href="/member-del.html" data-title="修改密码" href="javascript:;">删除的会员</a></li>
-					<li><a data-href="/member-level.html" data-title="退出登录" href="javascript:;">等级管理</a></li>
+					<li><a data-href="/member-del.html" data-title="修改密码" href="javascript:;">修改密码</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -61,6 +59,7 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 统计数据查看<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
+					<li><a data-href="/rawlocaldata-list.html" data-title="原始数据" href="javascript:;">原始数据</a></li>
 					<li><a data-href="/lastday.html" data-title="前日耗电量" href="javascript:void(0)">前日耗电量</a></li>
 					<li><a data-href="/charts-2.html" data-title="最近一年耗电量" href="javascript:void(0)">最近一年耗电量</a></li>
 				</ul>

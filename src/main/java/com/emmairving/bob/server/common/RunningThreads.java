@@ -100,4 +100,13 @@ public class RunningThreads {
     public static int getThreadsCounts() {
         return runningThreads.size();
     }
+
+    /**
+     *
+     * 查看给定电表号本地系统是否在运行中
+     *
+     */
+    public static boolean isAliveLocalSystem(String meter_number) {
+        return runningThreads.containsKey(meter_number);
+    }
 }

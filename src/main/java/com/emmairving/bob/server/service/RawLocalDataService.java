@@ -4,11 +4,14 @@ package com.emmairving.bob.server.service;
 import com.emmairving.bob.server.common.ConstantValueForServer;
 import com.emmairving.bob.server.dao.RawLocalDataDao;
 import com.emmairving.bob.server.model.RawLocalData;
+import com.emmairving.bob.server.model.RawLocalData_Select;
 import com.emmairving.bob.server.utils.CommandsUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by irving on 17/2/4.
@@ -78,5 +81,20 @@ public class RawLocalDataService {
         } catch(Exception e) {
             logger.error("Insert RawLocalData ERROR!");
         }
+    }
+
+    /**
+     *
+     * 根据条件获取列表
+     *
+     * @param rawLocalData_select
+     * @return
+     */
+    public List<RawLocalData> getList(RawLocalData_Select rawLocalData_select) {
+        return rawLocalDataDao.getList(rawLocalData_select);
+    }
+
+    public Integer getCount(RawLocalData_Select rawLocalData_select) {
+        return rawLocalDataDao.getCount(rawLocalData_select);
     }
 }

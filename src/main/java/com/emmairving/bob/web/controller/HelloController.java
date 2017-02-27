@@ -15,14 +15,19 @@ import java.util.Map;
 public class HelloController {
     private static Logger logger = LogManager.getLogger(HelloController.class);
 
-    @Value("${application.hello:Hello Angel}")
-    private String hello;
+//    @Value("${application.hello:Hello Angel}")
+//    private String hello;
 
 
     @RequestMapping("/welcome")
     public String welcome(Map<String,Object> map){
-        logger.debug("HelloController.welcome().hello="+hello);
-        map.put("hello", hello);
-        return "welcome";
+//        logger.debug("HelloController.welcome().hello="+hello);
+//        map.put("hello", hello);
+        return "/me2";
+    }
+
+    @RequestMapping("me")
+    public String me() {
+        return "/me2";
     }
 }
