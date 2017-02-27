@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emmairving.bob.server.dao.LocalDataDao">
+    <select id="getEnergy" parameterType="com.emmairving.bob.server.model.LocalDataEnergy_Select" resultType="java.lang.Double">
+        SELECT SUM(energy) FROM t_local_data
+        <where>
+            <if test="user_id != null">
+                user_id = #{user_id}
+            </if>
+            <if test="meter_number != null">
+                and meter_number = #{meter_number}
+            </if>
+            <if test="year != null">
+                and year = #{year}
+            </if>
+            <if test="month != null">
+                and month = #{month}
+            </if>
+            <if test="day != null">
+                and day = #{day}
+            </if>
+            <if test="hour != null">
+                and hour = #{hour}
+            </if>
+            <if test="minute != null">
+                and minute = #{minute}
+            </if>
+        </where>
+    </select>
+</mapper>

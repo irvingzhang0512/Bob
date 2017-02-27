@@ -45,18 +45,6 @@ public class WebController implements ApplicationContextAware {
         }
         return "server is started already!";
     }
-//
-//    @RequestMapping("socket")
-//    public Object socketTest() {
-//        try {
-//            Socket socket = new Socket("192.168.0.101", 8086);
-//        } catch (IOException e) {
-//            logger.error("Error Create Socket(\"192.168.0.101\", 8086);");
-//            e.printStackTrace();
-//            return "error";
-//        }
-//        return "success";
-//    }
 
     @ApiOperation(
         value = "向目标线程发送指令",

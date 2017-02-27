@@ -2,6 +2,7 @@ package com.emmairving.bob.server.dao;
 
 
 import com.emmairving.bob.server.model.LocalData;
+import com.emmairving.bob.server.model.LocalDataEnergy_Select;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -13,10 +14,10 @@ import org.apache.ibatis.annotations.Options;
 public interface LocalDataDao extends BaseDao<Integer, LocalData> {
     @Insert(
         "INSERT INTO t_local_data(meter_number, user_id, year, month, day, hour, minute, " +
-                "current, voltage, electricEnergy, activePower, " +
+                "current, voltage, electricEnergy, energy, activePower, " +
                 "reactivePower, apparentPower, powerFactor, status )" +
                 "VALUES(#{meter_number}, #{user_id}, #{year}, #{month}, #{day}, #{hour}, #{minute}, " +
-                "#{current}, #{voltage}, #{electricEnergy}, #{activePower}, " +
+                "#{current}, #{voltage}, #{electricEnergy}, #{energy}, #{activePower}, " +
                 "#{reactivePower}, #{apparentPower}, #{powerFactor}, #{status})"
     )
     @Options(
@@ -24,4 +25,6 @@ public interface LocalDataDao extends BaseDao<Integer, LocalData> {
             keyProperty = "id"
     )
     public void insert(LocalData localData);
+
+    public Double getEnergy(LocalDataEnergy_Select localDataEnergy_select);
 }

@@ -14,8 +14,8 @@ import java.util.List;
 public interface UserDetailDao {
 
     @Insert(
-        "INSERT INTO t_user_detail(id, last_login_ip, last_login_time, startPage) " +
-        "VALUES(#{id}, #{last_login_ip}, #{last_login_time}, #{startPage} )"
+        "INSERT INTO t_user_detail(id, last_login_ip, last_login_time, raw_local_data_start_page) " +
+        "VALUES(#{id}, #{last_login_ip}, #{last_login_time}, 0 )"
     )
     void insert(UserDetail userDetail);
 
@@ -24,4 +24,6 @@ public interface UserDetailDao {
     int getCount(UserDetail_Select userDetail_select);
 
     void update(UserDetail userDetail);
+
+
 }

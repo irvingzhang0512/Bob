@@ -59,6 +59,7 @@ public class HomeWebController {
         session.setAttribute("meter_number", user.getMeter_number());
         session.setAttribute("joinDate", user.getJoinDate().substring(0, 10));
 
+
         return "index";
     }
 

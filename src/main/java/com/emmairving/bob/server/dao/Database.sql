@@ -27,6 +27,7 @@ CREATE TABLE t_local_data (
     current double,
     voltage double,
     electricEnergy double,
+    energy double,
     activePower double,
     reactivePower double,
     apparentPower double,

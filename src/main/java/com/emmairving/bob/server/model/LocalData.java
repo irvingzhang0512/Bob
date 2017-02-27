@@ -28,6 +28,7 @@ public class LocalData {
     private Double current;
     private Double voltage;
     private Double electricEnergy;
+    private Double energy;
     private Double activePower;
     private Double reactivePower;
     private Double apparentPower;
@@ -48,7 +49,7 @@ public class LocalData {
 //        this.user_id = rawLocalData.getUser_id();
         this.user_id = 1;
         this.year = (short)calendar.get(Calendar.YEAR);
-        this.month = (short)calendar.get(Calendar.MONTH);
+        this.month = (short)(calendar.get(Calendar.MONTH)+1);
         this.day = (short)calendar.get(Calendar.DAY_OF_MONTH);
         this.hour = (short)calendar.get(Calendar.HOUR_OF_DAY);
         this.minute = (short)calendar.get(Calendar.MINUTE);
@@ -75,6 +76,7 @@ public class LocalData {
         this.reactivePower = .0;
         this.apparentPower = .0;
         this.powerFactor = .0;
+        this.energy = .0;
 
         this.electricEnergy = preElectricEnergy;
 
@@ -213,5 +215,13 @@ public class LocalData {
 
     public void setStatus(Short status) {
         this.status = status;
+    }
+
+    public Double getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(Double energy) {
+        this.energy = energy;
     }
 }

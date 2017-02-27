@@ -2,6 +2,7 @@ package com.emmairving.bob.server;
 
 import com.emmairving.bob.Bootstrap;
 import com.emmairving.bob.server.dao.RawLocalDataDao;
+import com.emmairving.bob.server.model.LocalDataEnergy_Select;
 import com.emmairving.bob.server.model.RawLocalData_Select;
 import com.emmairving.bob.server.service.LocalDataService;
 import org.junit.runner.RunWith;
@@ -26,8 +27,15 @@ public class Test {
 
     @org.junit.Test
     public void test() {
-        // 33
-        localDataService.rawLocalDataHandler(25404, 1, "000001094917");
+        LocalDataEnergy_Select localDataEnergy_select = new LocalDataEnergy_Select();
+        localDataEnergy_select.setUser_id(1);
+        localDataEnergy_select.setYear(2017);
+        System.out.println(localDataService.getEnergy(localDataEnergy_select));
+
+        // 46983
+
+        // 32040
+//        localDataService.rawLocalDataHandler(46982, 1, "000001094917");
 
 
 

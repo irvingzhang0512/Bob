@@ -65,13 +65,15 @@
 	</form>
 
 
-	<form class="form form-horizontal" id="isAlive" action="/user/battery">
+	<form class="form form-horizontal" id="isAlive" action="/user/supply">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;使用市电&nbsp;&nbsp;">
 		</div>
 	</form>
 
-	<form class="form form-horizontal" id="isAlive" action="/user/supply">
+	<div class="row cl"> <label class="form-label col-xs-4 col-sm-3"> </label></div>
+
+	<form class="form form-horizontal" id="isAlive" action="/user/battery">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
     			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;使用电池&nbsp;&nbsp;">
     		</div>

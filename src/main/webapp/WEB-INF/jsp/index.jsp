@@ -34,8 +34,7 @@
 				<ul class="cl">
 					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A"><%=session.getAttribute("name")%><i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
-							<li><a href="#">个人信息</a></li>
-							<li><a href="#">修改密码</a></li>
+							<li><a href="/pwd-change.html">修改密码</a></li>
 							<li><a href="#">退出</a></li>
 						</ul>
 					</li>
@@ -51,7 +50,7 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/member-del.html" data-title="修改密码" href="javascript:;">修改密码</a></li>
+					<li><a data-href="/pwd-change.html" data-title="修改密码" href="javascript:;">修改密码</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -61,7 +60,7 @@
 				<ul>
 					<li><a data-href="/rawlocaldata-list.html" data-title="原始数据" href="javascript:;">原始数据</a></li>
 					<li><a data-href="/lastday.html" data-title="前日耗电量" href="javascript:void(0)">前日耗电量</a></li>
-					<li><a data-href="/charts-2.html" data-title="最近一年耗电量" href="javascript:void(0)">最近一年耗电量</a></li>
+					<li><a data-href="/lastmonth.html" data-title="最近一月耗电量" href="javascript:void(0)">最近一月耗电量</a></li>
 				</ul>
 			</dd>
 		</dl>

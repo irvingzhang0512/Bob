@@ -21,8 +21,6 @@ public class UserWebController {
 
     private UserService userService;
 
-//    public UpdateUserResult(Integer id, String )
-
     @RequestMapping("isAliveLocalSystem")
     public String isAliveLocalSystem(HttpServletRequest req) {
         if( RunningThreads.isAliveLocalSystem((String)req.getSession().getAttribute("meter_number")) )
@@ -34,14 +32,24 @@ public class UserWebController {
     @RequestMapping("battery")
     public String useBattery(HttpServletRequest req) {
         logger.debug("user/battery");
-        RunningThreads.sendOrders((String)req.getSession().getAttribute("meter_number"), "CTRL RELAY1 CONNECT");
+        req.getSession().setAttribute("energySource", "电池");
+        RunningThreads.sendOrders((String)req.getSession().getAttribute("meter_number"), "CTRL RELAY1 DISCONNECT");
         return "redirect:/me";
     }
 
     @RequestMapping("supply")
     public String useSupply(HttpServletRequest req) {
         logger.debug("user/supply");
-        RunningThreads.sendOrders((String)req.getSession().getAttribute("meter_number"), "CTRL RELAY1 DISCONNECT");
+        req.getSession().setAttribute("energySource", "市电");
+        RunningThreads.sendOrders((String)req.getSession().getAttribute("meter_number"), "CTRL RELAY1 CONNECT");
         return "redirect:/me";
     }
+
+//    @RequestMapping("pwd_change")
+//    public String changePassword(
+//            String password,
+//            String npassword
+//    ) {
+//
+//    }
 }
