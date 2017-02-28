@@ -85,7 +85,7 @@ public class Worker extends Thread {
             } else {
                 rawLocalDataService.insertRawLocalData(rawLocalData);
                 rawLocalData = new RawLocalData();
-                if( insertCnt % 5 == 0 ) {
+                {
                     try {
                         writeOutput("RESPONSE GET RawLocalData " + insertCnt);
                     } catch (IOException e) {
