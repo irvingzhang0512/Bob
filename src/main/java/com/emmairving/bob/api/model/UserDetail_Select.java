@@ -13,6 +13,8 @@ public class UserDetail_Select {
     private Integer pageSize;
     private Integer pageNumber;
 
+    private String sort;
+
     public Integer getId() {
         return id;
     }
@@ -67,5 +69,13 @@ public class UserDetail_Select {
 
     public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }

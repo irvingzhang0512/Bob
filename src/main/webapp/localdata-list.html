@@ -19,10 +19,10 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>处理后数据显示</title>
+<title>整理后数据显示</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 数据统计 <span class="c-gray en">&gt;</span> 处理后数据查看 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 数据统计 <span class="c-gray en">&gt;</span> 整理后数据查看 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 </div>
 
@@ -102,27 +102,37 @@ $(function(){
 			},
 			{
 				"title": "有用功率",
-				"data": "active_power",
+				"data": "activePower",
 				"class": "text-c"
 			},
 			{
 				"title": "无用功率",
-				"data": "reactive_power",
+				"data": "reactivePower",
 				"class": "text-c"
 			},
 			{
 				"title": "视在功率",
-				"data": "apparent_power",
+				"data": "apparentPower",
 				"class": "text-c"
 			},
 			{
 				"title": "功率因素",
-				"data": "power_factor",
+				"data": "powerFactor",
 				"class": "text-c"
 			},
 			{
 				"title": "电能示数",
-				"data": "electric_energy",
+				"data": "electricEnergy",
+				"class": "text-c"
+			},
+			{
+				"title": "耗电量",
+				"data": "energy",
+				"class": "text-c"
+			},
+			{
+				"title": "状态",
+				"data": "status",
 				"class": "text-c"
 			}
  		],

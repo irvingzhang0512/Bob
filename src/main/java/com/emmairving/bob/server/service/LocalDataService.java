@@ -3,10 +3,7 @@ package com.emmairving.bob.server.service;
 import com.emmairving.bob.api.service.UserDetailService;
 import com.emmairving.bob.server.dao.LocalDataDao;
 import com.emmairving.bob.server.dao.RawLocalDataDao;
-import com.emmairving.bob.server.model.LocalData;
-import com.emmairving.bob.server.model.LocalDataEnergy_Select;
-import com.emmairving.bob.server.model.RawLocalData;
-import com.emmairving.bob.server.model.RawLocalData_Select;
+import com.emmairving.bob.server.model.*;
 import com.emmairving.bob.server.utils.DateUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,6 +32,13 @@ public class LocalDataService {
 
     private static int NUMBER_PER_TIME = 1000;
 
+    public List<LocalData> getList(LocalData_Select localData_select) {
+        return localDataDao.getList(localData_select);
+    }
+    public int getCount(LocalData_Select localData_select) {
+        return localDataDao.getCount(localData_select);
+    }
+
     /**
      *
      * 根据条件，获取能量消耗
@@ -62,7 +66,7 @@ public class LocalDataService {
      * @param user_id 数据拥有者
      * @param meter_number 拥有者智能电表号
      */
-    private void rawLocalDataHandler(int user_id, String meter_number) {
+    public void rawLocalDataHandler(int user_id, String meter_number) {
         //需要处理的数据的起始编号，即上次处理数据的最后一条编号
         int start = userDetailService.getUserPageStart(user_id);
 

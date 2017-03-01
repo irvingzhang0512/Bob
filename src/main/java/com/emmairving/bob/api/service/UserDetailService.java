@@ -3,6 +3,7 @@ package com.emmairving.bob.api.service;
 import com.emmairving.bob.api.dao.UserDetailDao;
 import com.emmairving.bob.api.model.UserDetail;
 import com.emmairving.bob.api.model.UserDetail_Select;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Service
 public class UserDetailService {
+    @Autowired
     private UserDetailDao userDetailDao;
 
     public void update(UserDetail userDetail) {

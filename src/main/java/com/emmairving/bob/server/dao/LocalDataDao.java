@@ -3,9 +3,12 @@ package com.emmairving.bob.server.dao;
 
 import com.emmairving.bob.server.model.LocalData;
 import com.emmairving.bob.server.model.LocalDataEnergy_Select;
+import com.emmairving.bob.server.model.LocalData_Select;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+
+import java.util.List;
 
 /**
  * Created by irving on 17/2/16.
@@ -27,4 +30,8 @@ public interface LocalDataDao extends BaseDao<Integer, LocalData> {
     public void insert(LocalData localData);
 
     public Double getEnergy(LocalDataEnergy_Select localDataEnergy_select);
+
+    public List<LocalData> getList(LocalData_Select localData_select);
+
+    public int getCount(LocalData_Select localData_select);
 }

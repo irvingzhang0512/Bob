@@ -59,6 +59,7 @@
 			<dd>
 				<ul>
 					<li><a data-href="/rawlocaldata-list.html" data-title="原始数据" href="javascript:;">原始数据</a></li>
+					<li><a data-href="/localdata-list.html" data-title="整理后数据" href="javascript:;">整理后数据</a></li>
 					<li><a data-href="/lastday.html" data-title="前日耗电量" href="javascript:void(0)">前日耗电量</a></li>
 					<li><a data-href="/lastmonth.html" data-title="最近一月耗电量" href="javascript:void(0)">最近一月耗电量</a></li>
 				</ul>

@@ -29,4 +29,67 @@
             </if>
         </where>
     </select>
+
+    <select id="getList" parameterType="com.emmairving.bob.server.model.LocalData_Select"
+        resultType="com.emmairving.bob.server.model.LocalData">
+        SELECT id, meter_number, user_id, year, month, day, hour, minute,
+            voltage, current, activePower, reactivePower, apparentPower, powerFactor,
+            electricEnergy, energy, status
+        FROM t_local_data
+        <where>
+            <if test="id != null">id = #{id}</if>
+            <if test="meter_number != null">and meter_number = #{meter_number}</if>
+            <if test="user_id != null">and user_id = #{user_id}</if>
+            <if test="year != null">and year = #{year}</if>
+            <if test="month != null">and month = #{month}</if>
+            <if test="day != null">and day = #{day}</if>
+            <if test="hour != null">and hour = #{hour}</if>
+            <if test="minute != null">and minute = #{minute}</if>
+            <if test="voltage != null">and voltage = #{voltage}</if>
+            <if test="current != null">and current = #{current}</if>
+            <if test="activePower != null">and activePower = #{activePower}</if>
+            <if test="reactivePower != null">and reactivePower = #{reactivePower}</if>
+            <if test="apparentPower != null">and apparentPower = #{apparentPower}</if>
+            <if test="powerFactor != null">and powerFactor = #{powerFactor}</if>
+            <if test="electricEnergy">and electricEnergy = #{electricEnergy}</if>
+            <if test="energy">and energy = #{energy}</if>
+            <if test="status">and status = #{status}</if>
+        </where>
+        ORDER BY
+        <choose>
+            <when test="sort == 'id'.toString()">id</when>
+            <when test="sort == 'd_id'.toString()">id desc</when>
+            <otherwise>id</otherwise>
+        </choose>
+        <if test="pageSize != null and pageStart != null">
+            LIMIT #{pageStart}, #{pageSize}
+        </if>
+    </select>
+
+
+
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*)
+        FROM t_local_data
+        <where>
+            <if test="id != null">id = #{id}</if>
+            <if test="meter_number != null">and meter_number = #{meter_number}</if>
+            <if test="user_id != null">and user_id = #{user_id}</if>
+            <if test="year != null">and year = #{year}</if>
+            <if test="month != null">and month = #{month}</if>
+            <if test="day != null">and day = #{day}</if>
+            <if test="hour != null">and hour = #{hour}</if>
+            <if test="minute != null">and minute = #{minute}</if>
+            <if test="voltage != null">and voltage = #{voltage}</if>
+            <if test="current != null">and current = #{current}</if>
+            <if test="activePower != null">and activePower = #{activePower}</if>
+            <if test="reactivePower != null">and reactivePower = #{reactivePower}</if>
+            <if test="apparentPower != null">and apparentPower = #{apparentPower}</if>
+            <if test="powerFactor != null">and powerFactor = #{powerFactor}</if>
+            <if test="electricEnergy">and electricEnergy = #{electricEnergy}</if>
+            <if test="energy">and energy = #{energy}</if>
+            <if test="status">and status = #{status}</if>
+        </where>
+    </select>
 </mapper>

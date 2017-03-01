@@ -1,6 +1,8 @@
 package com.emmairving.bob.web.controller;
 
+import com.emmairving.bob.server.model.LocalData;
 import com.emmairving.bob.server.model.LocalDataEnergy_Select;
+import com.emmairving.bob.server.model.LocalData_Select;
 import com.emmairving.bob.server.model.RawLocalData_Select;
 import com.emmairving.bob.server.service.LocalDataService;
 import com.emmairving.bob.server.service.RawLocalDataService;
@@ -72,16 +74,35 @@ public class DataWebController {
 
         return rst;
     }
+    @ApiOperation(
+            httpMethod = "POST",
+            response = ShowLocalDataListResult.class,
+            value = "显示localdata列表"
+    )
+    @RequestMapping("localdatalist")
+    public ShowLocalDataListResult showLocalDataList(
+            Integer start,
+            Integer length,
+            HttpServletRequest req) {
+        logger.debug("Use ShowLocalDataResult");
+        logger.debug("start = "+start+", length = "+length);
 
-//    @RequestMapping("localdatalist")
-//    public ShowLocalDataListResult showLocalDataList(
-//            Integer start,
-//            Integer length,
-//            HttpServletRequest req) {
-//        logger.debug("Use ShowLocalDataResult");
-//        logger.debug("start = "+start+", length = "+length);
-//
-//    }
+        ShowLocalDataListResult rst = new ShowLocalDataListResult();
+
+        LocalData_Select localData_select = new LocalData_Select();
+        localData_select.setUser_id(1);
+
+        rst.setRecordsFiltered(localDataService.getCount(localData_select));
+        rst.setRecordsTotal( rst.getRecordsFiltered());
+
+        localData_select.setPageSize(length);
+        localData_select.setPageStart(start);
+        localData_select.setSort("d_id");
+        rst.setData(localDataService.getList(localData_select));
+        logger.debug("data.size() = "+rst.getData().size());
+
+        return rst;
+    }
 
     /**
      *
@@ -127,6 +148,13 @@ public class DataWebController {
     }
 
 
+    /**
+     *
+     * 获取过去30天，每天的耗电量
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("last_month")
     public LastMonthEnergyResult getLastMonthEnergy(
             HttpServletRequest request

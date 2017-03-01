@@ -36,6 +36,29 @@ public class LocalData {
 
     private Short status;
 
+    @Override
+    public String toString() {
+        return "LocalData{" +
+                "id=" + id +
+                ", meter_number='" + meter_number + '\'' +
+                ", user_id=" + user_id +
+                ", year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", hour=" + hour +
+                ", minute=" + minute +
+                ", current=" + current +
+                ", voltage=" + voltage +
+                ", electricEnergy=" + electricEnergy +
+                ", energy=" + energy +
+                ", activePower=" + activePower +
+                ", reactivePower=" + reactivePower +
+                ", apparentPower=" + apparentPower +
+                ", powerFactor=" + powerFactor +
+                ", status=" + status +
+                '}';
+    }
+
     public boolean setValuesFromRawLocalData(RawLocalData rawLocalData) {
         Calendar calendar = null;
         try {
@@ -81,7 +104,7 @@ public class LocalData {
         this.electricEnergy = preElectricEnergy;
 
         this.year = (short)calendar.get(Calendar.YEAR);
-        this.month = (short)calendar.get(Calendar.MONTH);
+        this.month = (short)(calendar.get(Calendar.MONTH)+1);
         this.day = (short)calendar.get(Calendar.DAY_OF_MONTH);
         this.hour = (short)calendar.get(Calendar.HOUR_OF_DAY);
         this.minute = (short)calendar.get(Calendar.MINUTE);
