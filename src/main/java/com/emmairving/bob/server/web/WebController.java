@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 
 /**
  * Created by irving on 17/2/5.
@@ -64,5 +68,17 @@ public class WebController implements ApplicationContextAware {
     @RequestMapping("counts")
     public Integer threadCnts() {
         return RunningThreads.getThreadsCounts();
+    }
+
+    @RequestMapping("voltages")
+    public List<Double> getVoltages() {
+        List<Double> list = new ArrayList<Double>();
+
+        Random random = new Random();
+        for( int i = 0 ; i < 50 ; i++ ) {
+            list.add(1.0*(random.nextInt(13)+30) / 10.0 );
+        }
+
+        return list;
     }
 }
